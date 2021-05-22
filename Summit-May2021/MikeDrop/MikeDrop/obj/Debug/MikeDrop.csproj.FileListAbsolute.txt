@@ -1,6 +1,0 @@
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\obj\Debug\MikeDrop.csprojAssemblyReference.cache
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\bin\Debug\MikeDrop.exe.config
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\bin\Debug\MikeDrop.exe
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\bin\Debug\MikeDrop.pdb
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\obj\Debug\MikeDrop.exe
-C:\Users\mikeg\Source\Repos\MikeDrop\MikeDrop\obj\Debug\MikeDrop.pdb
